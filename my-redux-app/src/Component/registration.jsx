@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { registration } from '../redux/actions/actions';
+import { registration } from '../redux/actions/login';
 
 function Registration() {
   const [nome, setNome] = useState('');

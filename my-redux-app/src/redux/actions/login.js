@@ -1,5 +1,5 @@
 import { jwtDecode } from 'jwt-decode';
-
+export const LOGIN = "LOGIN"
 export const login = (data) => async (dispatch) => {
   dispatch({ type: 'LOGIN_REQUEST' });
 
@@ -36,6 +36,10 @@ export const login = (data) => async (dispatch) => {
   }
 
 };
+
+
+
+
 
 export const registration = (data) => async (dispatch) => {
   dispatch({ type: 'REGISTRATION_REQUEST' });
