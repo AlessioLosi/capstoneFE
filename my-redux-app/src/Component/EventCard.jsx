@@ -2,7 +2,7 @@ import React from 'react';
 
 const EventCard = ({ event }) => {
   return (
-    <div style={styles.card}>
+    <div >
       <h3>{event.nome}</h3>
       <p><strong>Artista:</strong> {event.artista}</p>
       <p><strong>Data:</strong> {new Date(event.data).toLocaleDateString()}</p>
@@ -13,14 +13,6 @@ const EventCard = ({ event }) => {
   );
 };
 
-const styles = {
-  card: {
-    border: '1px solid #ddd',
-    padding: '20px',
-    margin: '10px',
-    borderRadius: '8px',
-    backgroundColor: '#f9f9f9',
-  },
-};
+
 
 export default EventCard;

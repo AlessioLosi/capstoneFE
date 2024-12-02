@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ListEvent } from '../redux/actions/event'; // Importa l'azione corretta
-import EventCard from './EventCard'; // Importa il componente EventCard
+import { ListEvent } from '../redux/actions/event'; 
+import EventCard from './EventCard'; 
 
 const EventList = () => {
   const dispatch = useDispatch();
-  const events = useSelector((state) => state.events.events); // Accedi all'array corretto
+  const events = useSelector((state) => state.events.events);
 
   useEffect(() => {
     dispatch(ListEvent());
   }, [dispatch]);
 
   return (
-    <div style={styles.container}>
+    <div >
       <h2>Eventi disponibili</h2>
       {events && events.length > 0 ? (
         events.map((event) => <EventCard key={event.id} event={event} />)
@@ -23,13 +23,5 @@ const EventList = () => {
   );
 };
 
-const styles = {
-  container: {
-    maxWidth: '800px',
-    margin: '20px auto',
-    padding: '20px',
-    borderRadius: '8px',
-  },
-};
 
 export default EventList;

@@ -41,7 +41,7 @@ const CreateEventForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
+    <form onSubmit={handleSubmit} >
       <h2>Crea un nuovo evento</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       
@@ -108,16 +108,6 @@ const CreateEventForm = () => {
       <button type="submit">Crea Evento</button>
     </form>
   );
-};
-
-const styles = {
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '10px',
-    maxWidth: '500px',
-    margin: '20px auto',
-  },
 };
 
 export default CreateEventForm;
