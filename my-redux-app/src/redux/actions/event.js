@@ -4,13 +4,16 @@ export const FETCH_EVENT_DETAILS_SUCCESS = "FETCH_EVENT_DETAILS_SUCCESS";
 export const FETCH_EVENT_DETAILS_FAILURE = "FETCH_EVENT_DETAILS_FAILURE";
 export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS";
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE";
+export  const UPDATE_EVENT_IMAGE="UPDATE_EVENT_IMAGE";
+export const UPDATE_EVENT_FAILURE="UPDATE_EVENT_FAILURE";
 export const ListEvent = () => {
   return (dispatch) => {
+    const token = localStorage.getItem("token");
     fetch("http://localhost:3001/tuttieventi", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-       "Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzI5MDAzMzAsImV4cCI6MTczMzUwNTEzMCwic3ViIjoiNTZhMDM5ODMtY2VmNC00ZWUzLTk5ODUtMzU5OWY0ODI0ZTMzIn0.XI0BP4WcWxj-yM9MOyYj3j1-g8w3X6S8wrskMPDyu1s`,
+       "Authorization": `Bearer ${token}`,
       },
     })
       .then((response) => { 
@@ -24,7 +27,7 @@ export const ListEvent = () => {
         console.log("eventi", data);
         console.log(data.content)
         dispatch({
-          type: FETCH_EVENTS_SUCCESS,  // Correzione qui
+          type: FETCH_EVENTS_SUCCESS, 
           payload: data.content,
           
         });
@@ -42,7 +45,7 @@ export const createEvent = (eventData) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzI5MDAzMzAsImV4cCI6MTczMzUwNTEzMCwic3ViIjoiNTZhMDM5ODMtY2VmNC00ZWUzLTk5ODUtMzU5OWY0ODI0ZTMzIn0.XI0BP4WcWxj-yM9MOyYj3j1-g8w3X6S8wrskMPDyu1s `,
+            "Authorization": `Bearer ${token} `,
           },
           body: JSON.stringify(eventData),
         });
@@ -78,7 +81,7 @@ export const fetchEvents = (artista, page = 0, size = 10) => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzI5MDAzMzAsImV4cCI6MTczMzUwNTEzMCwic3ViIjoiNTZhMDM5ODMtY2VmNC00ZWUzLTk5ODUtMzU5OWY0ODI0ZTMzIn0.XI0BP4WcWxj-yM9MOyYj3j1-g8w3X6S8wrskMPDyu1s`,
+            "Authorization": `Bearer ${token}`,
           },
         }
       );
@@ -88,7 +91,7 @@ export const fetchEvents = (artista, page = 0, size = 10) => {
       }
 
       const data = await response.json();
-      dispatch({ type: FETCH_EVENTS_SUCCESS, payload: data.content });  // Assuming 'content' holds the events data
+      dispatch({ type: FETCH_EVENTS_SUCCESS, payload: data.content });  
     } catch (error) {
       dispatch({ type: FETCH_EVENTS_FAILURE, payload: error.message });
     }
@@ -124,11 +127,12 @@ export const deleteEvent = (eventId) => {
   return async (dispatch) => {
     try {
       const token = localStorage.getItem("token");
+      console.log(token)
       const response = await fetch(`http://localhost:3001/me/eventi/${eventId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzI5MDAzMzAsImV4cCI6MTczMzUwNTEzMCwic3ViIjoiNTZhMDM5ODMtY2VmNC00ZWUzLTk5ODUtMzU5OWY0ODI0ZTMzIn0.XI0BP4WcWxj-yM9MOyYj3j1-g8w3X6S8wrskMPDyu1s`,
+          "Authorization": `Bearer ${token}`,
         },
       });
 
@@ -143,6 +147,40 @@ export const deleteEvent = (eventId) => {
     }
   };
 };
+
+
+export const uploadEventImage = (file, eventId) => {
+  return async (dispatch) => {
+    const formData = new FormData();
+    formData.append('foto', file);
+
+    try {
+      const response = await fetch(`/me/foto/${eventId}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        dispatch({
+          type: UPDATE_EVENT_IMAGE,
+          payload: data, 
+        });
+      } else {
+        throw new Error('Errore nel caricamento dell\'immagine');
+      }
+    } catch (error) {
+      dispatch({
+        type: UPDATE_EVENT_FAILURE,
+        payload: error.message,
+      });
+    }
+  };
+};
+
 
 
   

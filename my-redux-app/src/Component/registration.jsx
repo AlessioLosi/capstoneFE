@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registration } from '../redux/actions/login';
-
+import { useNavigate } from 'react-router-dom';
 function Registration() {
   const [nome, setNome] = useState('');
   const [cognome, setCognome] = useState('');
@@ -9,11 +9,19 @@ function Registration() {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const dispatch = useDispatch();
+  const navigate=useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(registration({ nome, cognome, email, password, username }));
+    dispatch(registration({ nome, cognome, email, password, username }))
+    .then(() => {
+      navigate('/login');
+    })
+    .catch((error) => {
+
+      console.error("Errore durante la registrazione", error);
+    });
   };
 
   return (
@@ -63,7 +71,8 @@ function Registration() {
           required
         />
       </div>
-      <button type="submit">Registrati</button>
+      <button type="submit"> Registrati </button>
+      
     </form>
   );
 }

@@ -5,11 +5,16 @@ import loginReducer from '../Reducers/reducer';
 import RegistrationReducer from "../Reducers/registration";
 import { registration } from "../actions/login";
 import eventsReducer from "../Reducers/reducer";
+import postReducer from "../Reducers/post";
+import paymentReducer from "../Reducers/payments";
 
 const rootReducer = combineReducers({
   login: loginReducer,
   events:eventsReducer,
-  registration:RegistrationReducer
+  registration:RegistrationReducer,
+  posts:postReducer,
+  payment:paymentReducer
+
 });
 
 const store = configureStore({

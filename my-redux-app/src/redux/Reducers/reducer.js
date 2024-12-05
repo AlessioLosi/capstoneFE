@@ -3,6 +3,7 @@ const initialState = {
   eventDetails: null,    
   loading: false,        
   error: null,         
+  imageUrl: '',          
 };
 
 const eventsReducer = (state = initialState, action) => {
@@ -13,7 +14,6 @@ const eventsReducer = (state = initialState, action) => {
         ...state,
         loading: true,  
       };
-
 
     case "FETCH_EVENTS_SUCCESS":
       return {
@@ -28,13 +28,13 @@ const eventsReducer = (state = initialState, action) => {
         error: action.payload,  
         loading: false,         
       };
+
     case "CREATE_EVENT_SUCCESS":
       return {
         ...state,
         events: [action.payload, ...state.events],  
         loading: false,                           
       };
-
 
     case "CREATE_EVENT_FAILURE":
       return {
@@ -49,13 +49,11 @@ const eventsReducer = (state = initialState, action) => {
         eventDetails: action.payload,  
       };
 
-
     case "FETCH_EVENT_DETAILS_FAILURE":
       return {
         ...state,
         error: action.payload,
       };
-
 
     case "DELETE_EVENT_SUCCESS":
       return {
@@ -63,11 +61,17 @@ const eventsReducer = (state = initialState, action) => {
         events: state.events.filter(event => event.id !== action.payload), 
       };
 
-   
     case "DELETE_EVENT_FAILURE":
       return {
         ...state,
         error: action.payload,  
+      };
+
+   
+    case "UPDATE_EVENT_IMAGE":
+      return {
+        ...state,
+        imageUrl: action.payload,  
       };
 
     default:

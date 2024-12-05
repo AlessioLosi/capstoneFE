@@ -36,3 +36,62 @@
     transform: rotate(360deg);
   }
 }
+.logo{
+  width: 30%;
+}
+.bg {
+  background-image: url("./assets/sfondo.jpg");
+  background-size:cover;
+  min-height: 100vh;
+  min-width: 100%;
+}
+.btn{
+  color: purple;
+ box-shadow: 2px 2px 2px rgb(255, 252, 252);
+  border-color: purple;
+}
+.bglog{
+  min-height: 100vh;
+  min-width: 100%;
+}
+.purple{
+  background-color: purple;
+  color: white;
+  border-color: white;
+}
+.logonav{
+  width: 150px;
+}
+
+.nav{
+  background-color:rgb(217, 194, 248);
+}
+.black{
+  color: purple;
+  font-size:25px;
+  text-align: center;
+}
+
+
+.navbar {
+  margin: -10px;
+  height: auto; 
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    height: 70px;
+    padding: 0; 
+    display: flex;
+    align-items: center; 
+  }
+  .logonav{
+    width: 270px;
+  }
+
+  .navbar .nav-link {
+    padding: 0 1rem; /* Riduce padding dei link per compattezza */
+  }
+
+}
+
