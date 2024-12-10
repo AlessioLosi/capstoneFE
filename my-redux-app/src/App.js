@@ -8,7 +8,10 @@ import MainPage from './Component/MainPage';
 import GestioneEventi from './Component/ADMIN/GestioneEventi';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import UserProfile from './Component/UserProfile';
+import PostPage from './Component/ADMIN/PostPage';
+import AdminProfile from './Component/ADMIN/AdminProfile';
+import UserProfile from './Component/USER/UserProfile';
+import UserPostPage from './Component/USER/UserPostPage';
 function App() {
   return (
     <BrowserRouter>
@@ -20,8 +23,11 @@ function App() {
 
         <Route path="/dashboardUser" element={<DashboardUser />} />
         <Route path="/gestioneEventi" element={<GestioneEventi/>} />
-        <Route path="/profilo" element={<UserProfile/>} />
+        <Route path="/profilo" element={<AdminProfile/>} />
+        <Route path="/profiloUser" element={<UserProfile/>} />
+        <Route path="/postUser" element={<UserPostPage/>} />
         <Route path="/dashboardUser" element={<DashboardUser />} />
+        <Route path="/post" element={<PostPage/>} />
 
         <Route path="/dashboardAdmin" element={<DashboardAdmin />} />
 

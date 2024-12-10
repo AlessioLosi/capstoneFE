@@ -42,8 +42,9 @@
 .bg {
   background-image: url("./assets/sfondo.jpg");
   background-size:cover;
-  min-height: 100vh;
   min-width: 100%;
+  min-height: 140vh;
+
 }
 .btn{
   color: purple;
@@ -64,22 +65,23 @@
 }
 
 .nav{
-  background-color:rgb(217, 194, 248);
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgb(229, 45, 232), rgb(0, 0, 0) 0% 100%);
 }
 .black{
   color: purple;
-  font-size:25px;
+  font-size:23px;
   text-align: center;
 }
 
 
 .navbar {
-  margin: -10px;
-  height: auto; 
+  height: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .navbar {
+    width: 100%;
     height: 70px;
     padding: 0; 
     display: flex;
@@ -90,8 +92,35 @@
   }
 
   .navbar .nav-link {
-    padding: 0 1rem; /* Riduce padding dei link per compattezza */
+    padding: 0 1rem;
   }
 
 }
+.formricerca{
+ width: "50%";
+}
 
+.buttonSearch{
+  background-color: white;
+  box-shadow: 0 0 0 0 ;
+  border: white;
+
+}
+
+.buttonSearch:hover{
+  background-color: purple;
+  box-shadow: 0 0 0 0 ;
+  border:white
+  
+}
+.profile-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.profile-img {
+  max-width: 200px;
+  height: auto;
+}
