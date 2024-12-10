@@ -14,8 +14,8 @@ const EventListAdmin = () => {
 
   return (
     <Container>
-      <h2 className="my-4 text-center">Gestisci gli Eventi</h2>
-      <p className="text-center">Da qui puoi eliminare o modificare i tuoi Eventi</p>
+      <h2 className="my-4 text-center text-light">Gestisci gli Eventi</h2>
+      <p className="text-center text-light">Da qui puoi eliminare o modificare i tuoi Eventi</p>
       <Row className="g-4">
         {events && events.length > 0 ? (
           events.map((event) => (
@@ -25,7 +25,7 @@ const EventListAdmin = () => {
           ))
         ) : (
           <Col>
-            <p className="text-center">Nessun evento disponibile.</p>
+            <p className="text-center text-light">Nessun evento disponibile.</p>
           </Col>
         )}
       </Row>

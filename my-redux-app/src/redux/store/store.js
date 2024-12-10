@@ -7,13 +7,15 @@ import { registration } from "../actions/login";
 import eventsReducer from "../Reducers/reducer";
 import postReducer from "../Reducers/post";
 import paymentReducer from "../Reducers/payments";
+import commentReducer from "../Reducers/comments";
 
 const rootReducer = combineReducers({
   login: loginReducer,
   events:eventsReducer,
   registration:RegistrationReducer,
   posts:postReducer,
-  payment:paymentReducer
+  payment:paymentReducer,
+  comments:commentReducer,
 
 });
 

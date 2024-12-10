@@ -1,13 +1,17 @@
 import React from 'react';
 import EventListAdmin from './EventListAdmin';
-import MyNav from '../Mynavbar';
+import MynavbarAdmin from './MynavbarAdmin';
+import CreateEventForm from './CreateEvent';
+import Footercustom from '../Footer';
 
 
 function GestioneEventi() {
   return (
-    <div>
-      <MyNav/>
+    <div className='bg'>
+      <MynavbarAdmin/>
+      <CreateEventForm/>
       <EventListAdmin/>
+      <Footercustom/>
     </div>
   );
 }

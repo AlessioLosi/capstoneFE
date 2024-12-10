@@ -6,10 +6,10 @@ export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS";
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE";
 export  const UPDATE_EVENT_IMAGE="UPDATE_EVENT_IMAGE";
 export const UPDATE_EVENT_FAILURE="UPDATE_EVENT_FAILURE";
-export const ListEvent = () => {
+export const ListEvent = ( size=20) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:3001/tuttieventi", {
+    fetch(`http://localhost:3001/tuttieventi?&size=${size}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export const createEvent = (eventData) => {
     return async (dispatch) => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3001/me/eventi", {
+        const response = await fetch(`http://localhost:3001/me/eventi`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export const createEvent = (eventData) => {
     };
   };
 
-export const fetchEvents = (artista, page = 0, size = 10) => {
+export const fetchEvents = (artista, page = 0, size = 1000) => {
   return async (dispatch) => {
     try {
       const token = localStorage.getItem("token");

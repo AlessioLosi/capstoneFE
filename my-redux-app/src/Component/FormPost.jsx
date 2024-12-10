@@ -12,11 +12,12 @@ const CreatePost = () => {
     if (text) {
       dispatch(createPost({ testo: text }));
       setText('');
+      window.location.reload();
     }
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+    <Container className="d-flex justify-content-center align-items-center">
       <Row className="w-100">
         <Col xs={12} sm={8} md={6} lg={4} className="mx-auto">
           <h2 className='text-center mb-4'>Crea un nuovo post</h2>
@@ -28,7 +29,7 @@ const CreatePost = () => {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder='Inserisci il testo del tuo post'
-                required
+
               />
             </Form.Group>
             <Button type="submit" variant="light" className="w-100 mt-3">
