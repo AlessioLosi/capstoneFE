@@ -28,7 +28,7 @@ function MynavbarUser() {
             <Nav.Link href="/postUser" className="black testo"><b>Post</b></Nav.Link>
             <Nav.Link href="/profiloUser" className="black testo"><b>Profilo</b></Nav.Link>
             <Button onClick={handleLogout} className=' logout ms-5'>
-              Logout
+             <b> Logout</b>
               </Button>
 
           </Nav>
