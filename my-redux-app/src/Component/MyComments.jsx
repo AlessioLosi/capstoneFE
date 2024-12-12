@@ -13,6 +13,8 @@ const MyComments = () => {
 
   const handleDelete = (commentId) => {
     dispatch(deleteComment(commentId));
+    dispatch(fetchCommentsByUser());
+    window.location.reload();
   };
 
   const handleUpdate = (comment) => {
@@ -38,9 +40,9 @@ const MyComments = () => {
 
   return (
     <div>
-      <h3 className='text-center'>I tuoi commenti:</h3>
+      <h3 className='text-center'>I tuoi commenti</h3>
       {userComments.length === 0 ? (
-        <p>Non hai commentato ancora nulla.</p>
+        <p className='text-center'>Non hai commentato ancora nulla.</p>
       ) : (
         <Row>
           {userComments.map((comment) => (
@@ -54,9 +56,8 @@ const MyComments = () => {
                   <Row className='m-3 justify-content-between'>
                     <Col xs={6} className="d-flex justify-content-start">
                       <Button
-                        variant="warning"
                         onClick={() => handleUpdate(comment)}
-                        className="text-white border-light"
+                        className="purple"
                       >
                         Modifica
                       </Button>
@@ -96,10 +97,10 @@ const MyComments = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <Button variant="secondary" className='text-light border-light' onClick={() => setShowModal(false)}>
             Annulla
           </Button>
-          <Button variant="primary" onClick={handleSaveUpdate}>
+          <Button  className='purple'  onClick={handleSaveUpdate}>
             Salva modifiche
           </Button>
         </Modal.Footer>

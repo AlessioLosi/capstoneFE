@@ -46,24 +46,25 @@ const UserPosts = () => {
       <Row className="d-flex justify-content-center">
         {userPosts && userPosts.length > 0 ? (
           userPosts.map((post) => (
-            <Col xs={12}  key={post.id} className="mb-4">
+            <Col xs={12} key={post.id} className="mb-4">
               <Card className="shadow-sm">
                 <Card.Body>
-                  <Row className="d-flex align-items-center">
-                    <Col xs={3} className="d-flex align-items-center justify-content-center">
-                              <Image 
-                                src={post.creatore.avatar}
-                                 alt="profile" 
-                                 roundedCircle />
+                  <Row className="d-flex align-items-start">
+                    <Col xs={2} className="d-flex justify-content-start">
+                      <Image 
+                        src={post.creatore.avatar} 
+                        alt="profile" 
+                        className="rounded-circle profile mt-1" 
+                      />
                     </Col>
-                    <Col xs={9}>
-                      <Row>
-                        <h6>
-                          <strong>{post.creatore.username}</strong>
-                        </h6>
-                        <p className="text-muted">
-                          {post.creatore.nome} {post.creatore.cognome}
-                        </p>
+                    <Col xs={10}>
+                      <Row className="d-flex justify-content-between">
+                        <Col xs={12}>
+                          <h6><strong>{post.creatore.username}</strong></h6>
+                          <p className="text-muted">
+                            {post.creatore.nome} {post.creatore.cognome}
+                          </p>
+                        </Col>
                       </Row>
                       <Row>
                         <Card.Text className="mt-2">{post.testo}</Card.Text>
@@ -82,8 +83,7 @@ const UserPosts = () => {
                       Elimina
                     </Button>
                     <Button
-                      variant="warning"
-                      className="text-white border-warning"
+                      className="purple border-0"
                       onClick={() => handleEdit(post)}
                     >
                       Modifica

@@ -32,7 +32,7 @@ const CreatePost = () => {
 
               />
             </Form.Group>
-            <Button type="submit" variant="light" className="w-100 mt-3">
+            <Button type="submit" className="w-100 mt-3 purple border-0">
               Crea Post
             </Button>
           </Form>

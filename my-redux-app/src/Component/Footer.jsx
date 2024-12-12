@@ -7,9 +7,9 @@ const Footercustom = function () {
         <Row className="justify-content-around">
           <Col md={6} className='text-center mt-5'>
             <ul className="list-unstyled">
-              <li><a href="javascript:void(0)" className="text-decoration-none text-white">Help Center</a></li>
-              <li><a href="javascript:void(0)" className="text-decoration-none text-white">Jobs</a></li>
-              <li><a href="javascript:void(0)" className="text-decoration-none text-white">Cookie Preferences</a></li>
+              <li><a href="#" className="text-decoration-none text-white">Help Center</a></li>
+              <li><a href="#" className="text-decoration-none text-white">Jobs</a></li>
+              <li><a href="#" className="text-decoration-none text-white">Cookie Preferences</a></li>
             </ul>
           </Col>
           <Col md={6} className='text-center mt-5'>

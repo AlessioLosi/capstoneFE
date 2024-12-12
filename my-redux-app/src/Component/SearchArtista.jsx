@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchEvents, ListEvent } from "../redux/actions/event";  
 import EventCard from "./USER/EventCard";
 import { Button, Container, Row, Col, Form } from "react-bootstrap";
-import search from "../../node_modules/bootstrap-icons/icons/search.svg";
 import EventList from "./USER/eventList";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const EventSearchByArtist = () => {
   const dispatch = useDispatch();
@@ -31,8 +31,8 @@ const EventSearchByArtist = () => {
             required
             className="form-control me-2"
           />
-          <Button  type="submit" className="buttonSearch">
-            <img src={search} alt="ricerca" />
+          <Button  type="submit" className="purple border-0 text-light ">
+                <i className="bi bi-search" ></i>
           </Button>
         </div>
       </Form>

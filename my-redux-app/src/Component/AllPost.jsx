@@ -66,15 +66,15 @@ const AllPosts = () => {
               <Card className="altezza">
                 <Card.Body>
                   <Row className="align-items-center mb-3">
-                    <Col xs={1}>
+                    <Col xs={3} sm={2} md={1}>
                       <img
                         src={post.creatore.avatar}
                         alt="profile"
-                        className="rounded-circle"
+                        className="rounded-circle profile"
                       />
                     </Col>
-                    <Col xs={11}>
-                      <strong >{post.creatore.username}</strong>
+                    <Col xs={9} sm={10} md={11}>
+                      <strong>{post.creatore.username}</strong>
                       <br />
                       <p>{post.creatore.nome} {post.creatore.cognome}</p>
                     </Col>
@@ -94,7 +94,6 @@ const AllPosts = () => {
                       handleCommentSubmit(post.id);
                     }}
                     className="d-flex mt-3"
-                 
                   >
                     <Form.Control
                       type="text"
@@ -103,8 +102,8 @@ const AllPosts = () => {
                       onChange={(e) => handleCommentChange(post.id, e)}
                       className="me-3"
                     />
-                    <Button variant="primary" type="submit" size="md border-light">
-                    <i className="bi bi-send text-light "></i>
+                    <Button variant="primary" type="submit" size="md" className='purple'>
+                      <i className="bi bi-send text-light"></i>
                     </Button>
                   </Form>
 
@@ -126,17 +125,17 @@ const AllPosts = () => {
                         <div>
                           <h6 className='text-center'>Commenti:</h6>
                           {commentsByPost[post.id].map((comment) => (
-                              <Card key={comment.id} className="mb-2">
+                            <Card key={comment.id} className="mb-2">
                               <Card.Body>
                                 <Row className="align-items-center">
-                                  <Col xs={2}>
+                                  <Col xs={3}>
                                     <img
                                       src={comment.creatore.avatar}
                                       alt="profile"
-                                      className="rounded-circle"
+                                      className="rounded-circle profile"
                                     />
                                   </Col>
-                                  <Col xs={10}>
+                                  <Col xs={9}>
                                     <strong>{comment.creatore.username}</strong>
                                     <div>
                                       <p>{comment.testo}</p>

@@ -25,12 +25,12 @@ function MainPage() {
       <Row className="w-100 d-flex justify-content-center">
         <Col xs={10} md={4} className="d-flex justify-content-center mb-3 mb-md-0">
           <Link to="/login" className="w-100">
-            <Button variant="light" size="xxl" className="btn w-100">Login</Button>
+            <Button variant="light" size="xxl" className="btn w-100 border-0">Login</Button>
           </Link>
         </Col>
         <Col xs={10} md={4} className="d-flex justify-content-center">
           <Link to="/register" className="w-100">
-            <Button variant="light" size="xxl" className="btn w-100">Registrati</Button>
+            <Button variant="light" size="xxl" className="btn w-100 border-0">Registrati</Button>
           </Link>
         </Col>
       </Row>
