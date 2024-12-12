@@ -128,14 +128,14 @@ const AllPosts = () => {
                             <Card key={comment.id} className="mb-2">
                               <Card.Body>
                                 <Row className="align-items-center">
-                                  <Col xs={3}>
+                                  <Col xs={3} sm={2} md={1}>
                                     <img
                                       src={comment.creatore.avatar}
                                       alt="profile"
                                       className="rounded-circle profile"
                                     />
                                   </Col>
-                                  <Col xs={9}>
+                                  <Col xs={9} sm={10} md={11}>
                                     <strong>{comment.creatore.username}</strong>
                                     <div>
                                       <p>{comment.testo}</p>
