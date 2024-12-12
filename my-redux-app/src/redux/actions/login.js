@@ -1,5 +1,12 @@
 import { jwtDecode } from 'jwt-decode';
 export const LOGIN = "LOGIN"
+export const UPDATE_PROFILE_REQUEST = 'UPDATE_PROFILE_REQUEST';
+export const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';
+export const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
+export const UPDATE_AVATAR_REQUEST = 'UPDATE_AVATAR_REQUEST';
+export const UPDATE_AVATAR_SUCCESS = 'UPDATE_AVATAR_SUCCESS';
+export const UPDATE_AVATAR_FAILURE = 'UPDATE_AVATAR_FAILURE';
+export const LOGOUT = "LOGOUT";
 
 export const login = (data) => {
   return async (dispatch) => {
@@ -55,13 +62,12 @@ console.log(response)
       }
 
       const data = await response.json();
+      console.log(data)
       dispatch({
         type: "LOGIN",
         payload: data,
     
       });
-      localStorage.setItem("userData", JSON.stringify(data));
-    console.log(data)
     } catch (error) {
       console.error("Errore nel recupero dei dati dell'utente:", error.message);
     }
@@ -69,7 +75,15 @@ console.log(response)
 };
 
 
-
+export const logout = () => {
+  return (dispatch) => {
+    localStorage.removeItem("token");
+    dispatch({
+      type: LOGOUT,
+    });
+    window.location.href = "/";
+  };
+};
 
 
 
@@ -109,4 +123,45 @@ export const registration = (data) => async (dispatch) => {
   }
 
 };
+export const updateProfile = (profileData) => async (dispatch) => {
+  dispatch({ type: UPDATE_PROFILE_REQUEST });
+  try {
+    const token = localStorage.getItem("token");
+    const response = await fetch("http://localhost:3001/user/me", {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(profileData),
+    });
+    if (!response.ok) throw new Error('Failed to update profile');
+    const data = await response.json();
+    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: UPDATE_PROFILE_FAILURE, error: error.message });
+  }
+};
+
+export const updateAvatar = (avatarFile) => async (dispatch) => {
+  dispatch({ type: UPDATE_AVATAR_REQUEST });
+  try {
+    const token = localStorage.getItem("token");
+    const formData = new FormData();
+    formData.append('avatar', avatarFile);
+    const response = await fetch('http://localhost:3001/user/me/avatar', {
+      method: 'PATCH',
+      body: formData,
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    });
+    if (!response.ok) throw new Error('Failed to update avatar');
+    const data = await response.text();
+    dispatch({ type: UPDATE_AVATAR_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: UPDATE_AVATAR_FAILURE, error: error.message });
+  }
+};
+
 

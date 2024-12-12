@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthLog, login } from "../redux/actions/login"; 
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'; 
@@ -13,7 +13,9 @@ const MyLogin = () => {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const userData = useSelector(state => state.login.userData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,17 +28,12 @@ const MyLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-  
       await dispatch(login(formData)); 
+      await dispatch(AuthLog());
 
-      dispatch(AuthLog()); 
-
-      const user = JSON.parse(localStorage.getItem("userData")); 
-      console.log("User:", user);
-
-      if (user && user.tipologiaUtente === "ADMIN") {
+      if (userData && userData.tipologiaUtente === "ADMIN") {
         navigate("/dashboardAdmin"); 
-      } else if (user && user.tipologiaUtente ==="USER") {
+      } else if (userData && userData.tipologiaUtente ==="USER") {
         navigate("/dashboardUser");
       }
     } catch (error) {
@@ -73,7 +70,7 @@ const MyLogin = () => {
 
             <div className="mb-3">
               <input
-               placeholder="Email"
+                placeholder="Email"
                 type="email"
                 name="email"
                 value={formData.email}
@@ -83,9 +80,8 @@ const MyLogin = () => {
               />
             </div>
             <div className="mb-3">
-
               <input
-              placeholder="Password"
+                placeholder="Password"
                 type="password"
                 name="password"
                 value={formData.password}
@@ -94,14 +90,14 @@ const MyLogin = () => {
                 className="w-100 p-2"
               />
             </div>
-            <Button variant="light" size="lg" type="submit" className="w-100 mb-3 purple">
+            <Button variant="light" size="lg" type="submit" className="w-100 mb-3 purple border-0">
               Login
             </Button>
 
             <p className="text-center text-light">Oppure</p>
 
             <Link to="/register">
-              <Button variant="light" size="lg" className="w-100 purple">
+              <Button variant="light" size="lg" className="w-100 purple border-0">
                 Registrati
               </Button>
             </Link>
@@ -111,6 +107,5 @@ const MyLogin = () => {
     </Container>
   );
 };
-
 
 export default MyLogin;
