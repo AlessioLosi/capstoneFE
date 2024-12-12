@@ -53,25 +53,26 @@ const MyComments = () => {
                   <Card.Subtitle className="mb-2 text-muted">
                     {new Date(comment.data).toLocaleString()}
                   </Card.Subtitle>
-                  <Row className='m-3 justify-content-between'>
-                    <Col xs={6} className="d-flex justify-content-start">
-                      <Button
-                        onClick={() => handleUpdate(comment)}
-                        className="purple"
-                      >
-                        Modifica
-                      </Button>
-                    </Col>
-                    <Col xs={6} className="d-flex justify-content-end">
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDelete(comment.id)}
-                        className="text-white border-light"
-                      >
-                        Elimina
-                      </Button>
-                    </Col>
-                  </Row>
+                  <Row className='m-3'>
+  <Col xs={12}  className="d-flex justify-content-start mb-2 mb-md-0">
+    <Button
+      onClick={() => handleUpdate(comment)}
+      className="purple w-100"
+    >
+      Modifica
+    </Button>
+  </Col>
+  <Col xs={12}  className="d-flex justify-content-end">
+    <Button
+      variant="danger"
+      onClick={() => handleDelete(comment.id)}
+      className="text-white border-light w-100"
+    >
+      Elimina
+    </Button>
+  </Col>
+</Row>
+
                 </Card.Body>
               </Card>
             </Col>
