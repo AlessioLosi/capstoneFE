@@ -1,15 +1,19 @@
+import { Alert } from "react-bootstrap";
+
 export const FETCH_EVENTS_SUCCESS = "FETCH_EVENTS_SUCCESS";
 export const FETCH_EVENTS_FAILURE = "FETCH_EVENTS_FAILURE";
 export const FETCH_EVENT_DETAILS_SUCCESS = "FETCH_EVENT_DETAILS_SUCCESS";
 export const FETCH_EVENT_DETAILS_FAILURE = "FETCH_EVENT_DETAILS_FAILURE";
 export const DELETE_EVENT_SUCCESS = "DELETE_EVENT_SUCCESS";
 export const DELETE_EVENT_FAILURE = "DELETE_EVENT_FAILURE";
+export const CREATE_EVENT_SUCCESS="CREATE_EVENT_SUCCESS";
+export const CREATE_EVENT_FAILURE="CREATE_EVENT_FAILURE";
 export  const UPDATE_EVENT_IMAGE="UPDATE_EVENT_IMAGE";
 export const UPDATE_EVENT_FAILURE="UPDATE_EVENT_FAILURE";
-export const ListEvent = ( size=20) => {
+export const ListEvent = (size=20) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:3001/tuttieventi?&size=${size}`, {
+    fetch(`http://localhost:3001/tuttieventi?size=${size}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -34,6 +38,7 @@ export const ListEvent = ( size=20) => {
       })
       .catch((err) => {
         console.log("Errore nel recupero dei dati:", err);
+        <Alert>NON PUOI CREARE EVENTI</Alert>
       });
   };
 };
@@ -58,13 +63,13 @@ export const createEvent = (eventData) => {
         console.log("Evento creato:", data);
   
         dispatch({
-          type: "CREATE_EVENT_SUCCESS",
+          type: CREATE_EVENT_SUCCESS,
           payload: data,
         });
       } catch (error) {
         console.error("Errore nella creazione dell'evento:", error);
         dispatch({
-          type: "CREATE_EVENT_FAILURE",
+          type: CREATE_EVENT_FAILURE,
           payload: error.message,
         });
       }
@@ -155,7 +160,7 @@ export const uploadEventImage = (file, eventId) => {
     formData.append('foto', file);
 
     try {
-      const response = await fetch(`/me/foto/${eventId}`, {
+      const response = await fetch(`http://localhost:3001/me/foto/${eventId}`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,

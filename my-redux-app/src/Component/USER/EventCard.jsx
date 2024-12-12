@@ -11,16 +11,17 @@ const EventCard = ({ event }) => {
   };
 
   return (
-    <Card className="my-3 shadow-sm">
+    <Card className="my-3 altezzaCard">
       <Row>
         <Col sm={12}>
           <Card.Img 
             src={event.foto} 
             alt="foto evento" 
+            className="fotoEvento"
           />
         </Col>
         <Col sm={12}>
-          <Card.Body className="text-center">
+          <Card.Body className="text-center cardBody">
             <Card.Title>{event.nome}</Card.Title>
             <Card.Text>
               <strong>Artista:</strong> {event.artista}
@@ -37,16 +38,18 @@ const EventCard = ({ event }) => {
             <Card.Text>
               <strong>Prezzo:</strong> €{event.prezzo.toFixed(2)}
             </Card.Text>
-            <div className="d-flex justify-content-center">
+            </Card.Body>
+          </Col>
+          <Col>
+          <div className="d-flex justify-content-center ">
               <Button 
-                variant="primary" 
                 onClick={handleBooking} 
-                className="text-decoration-none text-white"
+                className='purple border-0'
               >
                 Prenota
               </Button>
+  
             </div>
-          </Card.Body>
         </Col>
       </Row>
     </Card>
