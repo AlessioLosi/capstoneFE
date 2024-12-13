@@ -9,6 +9,8 @@ import {
   DELETE_EVENT_FAILURE,
   UPDATE_EVENT_IMAGE,
   UPDATE_EVENT_FAILURE,
+ UPDATE_EVENT_SUCCESS,
+  UPDATE_EVENTS_FAILURE,
 } from "../actions/event";
 
 const initialState = {
@@ -95,6 +97,20 @@ const eventsReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
+      case UPDATE_EVENT_SUCCESS:
+  return {
+    ...state,
+    events: state.events.map(event =>
+      event.id === action.payload.id ? action.payload : event
+    ),
+    error: null,
+  };
+case UPDATE_EVENTS_FAILURE:
+  return {
+    ...state,
+    error: action.payload,
+  };
+
 
     default:
       return state;

@@ -10,6 +10,9 @@ export const CREATE_EVENT_SUCCESS="CREATE_EVENT_SUCCESS";
 export const CREATE_EVENT_FAILURE="CREATE_EVENT_FAILURE";
 export  const UPDATE_EVENT_IMAGE="UPDATE_EVENT_IMAGE";
 export const UPDATE_EVENT_FAILURE="UPDATE_EVENT_FAILURE";
+export const UPDATE_EVENT_SUCCESS = "UPDATE_EVENT_SUCCESS";
+export const UPDATE_EVENTS_FAILURE = "UPDATE_EVENTS_FAILURE";
+
 export const ListEvent = (size=20) => {
   return (dispatch) => {
     const token = localStorage.getItem("token");
@@ -180,6 +183,39 @@ export const uploadEventImage = (file, eventId) => {
     } catch (error) {
       dispatch({
         type: UPDATE_EVENT_FAILURE,
+        payload: error.message,
+      });
+    }
+  };
+};
+export const updateEvent = (eventId, updatedData) => {
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(`http://localhost:3001/me/eventi/${eventId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Errore durante l'aggiornamento dell'evento");
+      }
+
+      const data = await response.json();
+      console.log("Evento aggiornato:", data);
+
+      dispatch({
+        type: UPDATE_EVENT_SUCCESS,
+        payload: data.content,
+      });
+    } catch (error) {
+      console.error("Errore nell'aggiornamento dell'evento:", error);
+      dispatch({
+        type: UPDATE_EVENTS_FAILURE,
         payload: error.message,
       });
     }

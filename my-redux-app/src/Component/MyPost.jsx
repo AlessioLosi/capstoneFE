@@ -118,10 +118,10 @@ const UserPosts = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <Button variant="secondary" className="text-light" onClick={() => setShowModal(false)}>
             Annulla
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button  className='purple' onClick={handleSave}>
             Salva Modifiche
           </Button>
         </Modal.Footer>

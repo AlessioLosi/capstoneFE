@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+EventNow
+EventNow è un'applicazione per la gestione di eventi, pensata per amministratori e utenti. Gli amministratori possono gestire eventi, mentre gli utenti possono acquistare biglietti, interagire con post e commentare. Inoltre, gli utenti hanno la possibilità di creare post visibili ad altri utenti.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tecnologie utilizzate
+React
+JavaScript
+Redux
+React Bootstrap / CSS
+Stripe
+Funzionalità
+Main Page
+Autenticazione: Gli utenti possono autenticarsi o registrarsi se non hanno un account.
+Identificazione dell'utente: Il sistema identifica automaticamente se l'utente è un admin o un utente e lo reindirizza alla dashboard appropriata.
+Dashboard Admin / Dashboard User
+Ricerca eventi: Gli utenti possono cercare eventi in base al loro artista preferito.
+Prenotazione eventi: Gli utenti possono prenotare biglietti e completare il pagamento tramite Stripe.
+Post
+Creazione di post: Gli utenti possono creare post visibili a tutti.
+Commenti: Gli utenti possono commentare i post e visualizzare tutti i commenti di un determinato post.
+Visualizzazione post: Gli utenti possono vedere i post creati da altri utenti.
+Gestione Eventi (per gli Admin)
+Creazione, modifica e eliminazione di eventi.
+Profilo
+Gestione dei post: Gli utenti possono creare, modificare o eliminare i propri post.
+Gestione dei commenti: Gli utenti possono modificare o eliminare i propri commenti.
+Visualizzazione delle prenotazioni: Gli utenti possono visualizzare tutte le loro prenotazioni e annullarle se necessario.
+Logout
+Gli utenti possono disconnettersi dal proprio account e tornare alla main page.
+Getting Started with Create React App
+Questo progetto è stato creato con Create React App.
 
-## Available Scripts
+Installazione
+Per iniziare a lavorare con il progetto, segui questi passaggi:
 
-In the project directory, you can run:
+Clona il repository:
 
-### `npm start`
+bash
+Copia codice
+git clone https://github.com/tuo-username/eventnow.git
+Entra nella cartella del progetto:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copia codice
+cd eventnow
+Installa le dipendenze:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Frontend (React):
 
-### `npm test`
+bash
+Copia codice
+cd client
+npm install
+Backend (se presente):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copia codice
+cd server
+npm install
+Avvia l'applicazione:
 
-### `npm run build`
+Frontend:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copia codice
+npm start
+Backend:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copia codice
+npm start
+Vai su http://localhost:3000 nel tuo browser per visualizzare l'app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Script disponibili
+Nel progetto, puoi eseguire i seguenti comandi:
 
-### `npm run eject`
+npm start
+Esegue l'app in modalità sviluppo.
+Apri http://localhost:3000 nel tuo browser per visualizzarla.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm test
+Esegue i test in modalità interattiva.
+Consulta la sezione sui test per maggiori informazioni.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npm run build
+Compila l'app per la produzione nella cartella build.
+La build è ottimizzata per la migliore performance.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npm run eject
+Nota: questa è un'operazione irreversibile.
+Se non sei soddisfatto della configurazione degli strumenti di build, puoi eseguire eject per avere il pieno controllo.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Contributi
+Se vuoi contribuire al progetto:
 
-## Learn More
+Fai un fork del repository.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Crea un branch per la tua funzionalità:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+Copia codice
+git checkout -b feature/nome-funzionalità
+Fai il commit delle tue modifiche:
 
-### Code Splitting
+bash
+Copia codice
+git commit -am 'Aggiungi nuova funzionalità'
+Fai il push del tuo branch:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+bash
+Copia codice
+git push origin feature/nome-funzionalità
+Invia una pull request.
 
-### Analyzing the Bundle Size
+Licenza
+Questo progetto è concesso sotto la licenza MIT. Vedi il file LICENSE per maggiori dettagli.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Link utili
+Documentazione di Create React App
+Documentazione di React
+Stripe
+Backend Repository
