@@ -115,7 +115,6 @@ Licenza
 Questo progetto è concesso sotto la licenza MIT. Vedi il file LICENSE per maggiori dettagli.
 
 Link utili
-Documentazione di Create React App
-Documentazione di React
-Stripe
-Backend Repository
+Backend: https://github.com/AlessioLosi/capstone
+Stripe: https://stripe.com/docs
+Documentazione di React: https://reactjs.org/
